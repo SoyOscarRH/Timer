@@ -19,29 +19,29 @@
 
       font-variant-numeric: tabular-nums;
       font-family: "Inter", sans-serif;
-      font-size: 1.8rem;
+      font-size: 2rem;
       text-align: center;
       color: #eeeeee;
 
-      padding: 10vh;
+      padding: 5vh;
     }
 
     p {
       margin: 0.4rem;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     #displayTimer {
-      font-weight: 200;
-      font-size: 6rem;
+      font-weight: 300;
+      font-size: 8rem;
     }
 
     h1 {
-      font-weight: 400;
+      font-weight: 500;
     }
 
     h3 {
-      font-weight: 300;
+      font-weight: 400;
     }
 
     @keyframes gradient {
@@ -67,41 +67,40 @@
         transform: rotate(0deg);
       }
       to {
-        transform: rotate(-360deg);
+        transform: rotate(360deg);
       }
     }
   </style>
 
   <body>
     <h1>Introducción al Frontend con React</h1>
-    <h3><b>Clase 0:</b> ¿Qué veremos? y fundamentos de la web</h3>
+    <h3><b>Clase 1:</b> ¿Qué veremos en el curso? y fundamentos de la web</h3>
     <br />
     <br />
     <p>La clase comenzará en:</p>
-    <p id="displayTimer" />
+    <p id="displayTimer">05:00</p>
     <section>
       <img src="react.png" />
     </section>
   </body>
 
   <script defer>
-    const COUNTDOWN_TIMER = 5 * 60;
+    const COUNTDOWN_TIMER_SECONDS = 5 * 60;
     const display = document.getElementById("displayTimer");
 
-    let reaminingSeconds = COUNTDOWN_TIMER;
+    const padding = num => num < 10 ? "0" + num : num;
+
+    let reaminingSeconds = COUNTDOWN_TIMER_SECONDS;
     const id = setInterval(() => {
-      let minutes = parseInt(reaminingSeconds / 60);
-      let seconds = parseInt(reaminingSeconds % 60);
+      const minutes = parseInt(reaminingSeconds / 60);
+      const seconds = parseInt(reaminingSeconds % 60);
 
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-
-      display.textContent = minutes + ":" + seconds;
+      display.textContent = padding(minutes) + ":" + padding(seconds);
       reaminingSeconds -= 1;
       if (reaminingSeconds < 0) {
         reaminingSeconds = 0;
         clearInterval(id);
       }
-    }, 100);
+    }, 800);
   </script>
 </html>
