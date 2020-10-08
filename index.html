@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Timer</title>
+    <meta name="description" content="A simple timer for streams" />
+    <meta name="author" content="SoyOscarRH" />
+  </head>
+
+  <style>
+    @import url("https://rsms.me/inter/inter.css");
+
+    body {
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+
+      font-variant-numeric: tabular-nums;
+      font-family: "Inter", sans-serif;
+      font-size: 1.8rem;
+      text-align: center;
+      color: #eeeeee;
+
+      padding: 10vh;
+    }
+
+    p {
+      margin: 0.4rem;
+      font-weight: 500;
+    }
+
+    #displayTimer {
+      font-weight: 200;
+      font-size: 6rem;
+    }
+
+    h1 {
+      font-weight: 400;
+    }
+
+    h3 {
+      font-weight: 300;
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    img {
+      max-width: 7rem;
+      animation: spin infinite 45s linear;
+      filter: invert(0.9);
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(-360deg);
+      }
+    }
+  </style>
+
+  <body>
+    <h1>Introducción al Frontend con React</h1>
+    <h3><b>Clase 0:</b> ¿Qué veremos? y fundamentos de la web</h3>
+    <br />
+    <br />
+    <p>La clase comenzará en:</p>
+    <p id="displayTimer" />
+    <section>
+      <img src="react.png" />
+    </section>
+  </body>
+
+  <script defer>
+    const COUNTDOWN_TIMER = 5 * 60;
+    const display = document.getElementById("displayTimer");
+
+    let reaminingSeconds = COUNTDOWN_TIMER;
+    const id = setInterval(() => {
+      let minutes = parseInt(reaminingSeconds / 60);
+      let seconds = parseInt(reaminingSeconds % 60);
+
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      display.textContent = minutes + ":" + seconds;
+      reaminingSeconds -= 1;
+      if (reaminingSeconds < 0) {
+        reaminingSeconds = 0;
+        clearInterval(id);
+      }
+    }, 100);
+  </script>
+</html>
