@@ -74,21 +74,22 @@
 
   <body>
     <h1>Introducción al Frontend con React</h1>
-    <h3><b>Clase 1:</b> ¿Qué veremos en el curso? y fundamentos de la web</h3>
+    <h3><b>Clase 2:</b> Repaso a CSS y al diseño</h3>
     <br />
     <br />
-    <p>La clase comenzará en:</p>
-    <p id="displayTimer">05:00</p>
     <section>
-      <img src="react.png" />
+      <p>La clase comenzará en:</p>
+      <p id="displayTimer"></p>
     </section>
+
+    <img src="react.png" />
   </body>
 
   <script defer>
     const COUNTDOWN_TIMER_SECONDS = 5 * 60;
     const display = document.getElementById("displayTimer");
 
-    const padding = num => num < 10 ? "0" + num : num;
+    const padding = (num) => (num < 10 ? "0" + num : num);
 
     let reaminingSeconds = COUNTDOWN_TIMER_SECONDS;
     const id = setInterval(() => {
