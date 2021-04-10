@@ -24,6 +24,9 @@
       color: #eeeeee;
 
       padding: 5vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     p {
@@ -71,11 +74,19 @@
         transform: rotate(360deg);
       }
     }
+
+    .hidden {
+      display: none;
+    }
+    audio {
+      display: block;
+      padding: 1rem;
+    }
   </style>
 
   <body>
     <h1>Introducción al Frontend con React</h1>
-    <h3><b>Clase 2:</b> Repaso a CSS y al diseño</h3>
+    <h3><b>Clase 9:</b> Introducción a React</h3>
     <br />
     <br />
     <section>
@@ -84,25 +95,40 @@
     </section>
 
     <img src="react.png" />
+
+    <audio id="audio" controls autoplay>
+      <source
+        src="./ruins_in_the_sand.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
   </body>
 
   <script defer>
-    const COUNTDOWN_TIMER_SECONDS = 5 * 60;
-    const display = document.getElementById("displayTimer");
+    {
+      const COUNTDOWN_TIMER_SECONDS = 3 * 60;
+      const display = document.getElementById("displayTimer");
 
-    const padding = (num) => (num < 10 ? "0" + num : num);
+      const padding = (num) => (num < 10 ? "0" + num : num);
 
-    let reaminingSeconds = COUNTDOWN_TIMER_SECONDS;
-    const id = setInterval(() => {
-      const minutes = parseInt(reaminingSeconds / 60);
-      const seconds = parseInt(reaminingSeconds % 60);
+      let reaminingSeconds = COUNTDOWN_TIMER_SECONDS;
+      const id = setInterval(() => {
+        const minutes = parseInt(reaminingSeconds / 60);
+        const seconds = parseInt(reaminingSeconds % 60);
 
-      display.textContent = padding(minutes) + ":" + padding(seconds);
-      reaminingSeconds -= 1;
-      if (reaminingSeconds < 0) {
-        reaminingSeconds = 0;
-        clearInterval(id);
-      }
-    }, 800);
+        display.textContent = padding(minutes) + ":" + padding(seconds);
+        reaminingSeconds -= 1;
+        if (reaminingSeconds < 0) {
+          reaminingSeconds = 0;
+          clearInterval(id);
+        }
+      }, 800);
+    }
+    {
+      const audio = document.getElementById("audio");
+      document.body.addEventListener("keypress", ({ code }) => {
+        if (code === "Space") audio.classList.toggle("hidden");
+      });
+    }
   </script>
 </html>
